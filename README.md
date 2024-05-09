@@ -54,63 +54,48 @@ Before you begin the installation, make sure you have the following prerequisite
 ```bash
 sudo apt update
 sudo apt install python3 python3-pip cmake vim git wget qtbase5-dev libqt5xmlpatterns5-dev libopenscenegraph-dev libgsl-dev 
-pip3 install vcstool colcon-common-extensions 
+pip3 install vcstool 
 ```
 
 ### Prerequisites for Compiling Robocomp Components
 ```bash
-sudo apt install qt6-base-dev libbz2-dev libssl-dev zeroc-icebox zeroc-ice-all-dev libzeroc-icestorm3.7 libeigen3-dev meld
+sudo apt install qt6-base-dev qt6-declarative-dev qt6-scxml-dev libqt6statemachineqml6 libqt6statemachine6 libbz2-dev libssl-dev zeroc-icebox zeroc-ice-all-dev libzeroc-icestorm3.7 libeigen3-dev meld
 pip install PySide2 zeroc-ice
 ```
 
 ## Installation Steps
 
-1. Create a directory for your RoboComp workspace and navigate to it:
+1. Download the robocomp.repos file:
 ```bash
-mkdir -p ~/robocomp_ws/src
-cd ~/robocomp_ws
-```
-
-2. Download the robocomp.repos file:
-```bash
+cd
 wget https://raw.githubusercontent.com/robocomp/robocomp2/main/robocomp.repos
 ```
 
-4. Configure environment variables:
+2. Configure environment variables:
 ```bash
 echo "export ROBOCOMP=/home/robocomp/robocomp" >> ~/.bashrc
-echo "export PATH=\$PATH:/home/usuario/.local/bin" >>  ~/.bashrc
+echo "export PATH=\$PATH:/home/$USER/.local/bin" >>  ~/.bashrc
 source ~/.bashrc
 ```
 
-4. Import RoboComp packages:
+3. Import RoboComp packages:
 ```bash
-vcs import src < robocomp.repos
+vcs import . < robocomp.repos
 ```
 
-5. Install RoboComp command-line tools:
+4. Install RoboComp command-line tools:
 ```bash
-pushd . && cd src/robocomp/robocomp_tools/cli/ && pip install . && popd
-```
-
-6. Create symbolic links:
-```bash
-cd 
-ln -s robocomp_ws/src/robocomp robocomp
+pushd . && cd robocomp/tools/cli/ && pip install . && popd
 ```
 
 ```bash
-cd /home
-sudo ln -s usuario robocomp
+sudo ln -s /home/$USER /home/robocomp
 ```
 
 ```bash
 cd /home/robocomp/robocomp
-ln -s robocomp_core/cmake cmake
-ln -s robocomp_core/classes classes
-ln -s robocomp_interfaces/interfaces interfaces
-ln -s robocomp_tools tools
-ln -s robocomp_cortex cortex
+ln -s core/cmake cmake
+ln -s core/classes classes
 mkdir components
 ```
 
@@ -118,15 +103,16 @@ mkdir components
 sudo ln -s /usr/include/eigen3/Eigen/ /usr/include/Eigen
 ```
 
-7. Add an alias for rcnode to your .bashrc:
+5. Add an alias for rcnode to your .bashrc:
 ```bash
 echo "alias rcnode='bash /home/robocomp/robocomp/tools/rcnode/rcnode.sh&'" >>  ~/.bashrc
 source ~/.bashrc
 ```
 
+
 If you are going to develop with Robocomp it's recommendable to install the following packages too:
 ```bash
-sudo apt-get install yakuake qttools5-dev-tools qt5-assistant meld
+sudo apt-get install yakuake qttools5-dev-tools qt5-assistant
 ```
 
 Done! Now let's have some fun.
