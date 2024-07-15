@@ -60,7 +60,7 @@ pip3 install vcstool
 ### Prerequisites for Compiling Robocomp Components
 ```bash
 sudo apt install qt6-base-dev qt6-declarative-dev qt6-scxml-dev libqt6statemachineqml6 libqt6statemachine6 libbz2-dev libssl-dev zeroc-icebox zeroc-ice-all-dev libzeroc-icestorm3.7 libeigen3-dev meld
-pip install PySide2 zeroc-ice
+pip install PySide6 zeroc-ice
 ```
 
 ## Installation Steps
