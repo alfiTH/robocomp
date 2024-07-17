@@ -94,8 +94,10 @@ sudo ln -s /home/$USER /home/robocomp
 
 ```bash
 cd /home/robocomp/robocomp
-ln -s core/cmake cmake
-ln -s core/classes classes
+ln -s robocomp_core/cmake cmake
+ln -s robocomp_core/classes classes
+ln -s robocomp_interfaces interfaces
+ln -s robocomp_tools tools
 mkdir components
 ```
 
