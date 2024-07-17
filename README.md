@@ -83,11 +83,6 @@ source ~/.bashrc
 vcs import . < robocomp.repos
 ```
 
-4. Install RoboComp command-line tools:
-```bash
-pushd . && cd robocomp/tools/cli/ && pip install . && popd
-```
-
 ```bash
 sudo ln -s /home/$USER /home/robocomp
 ```
@@ -99,6 +94,11 @@ ln -s robocomp_core/classes classes
 ln -s robocomp_interfaces interfaces
 ln -s robocomp_tools tools
 mkdir components
+```
+
+4. Install RoboComp command-line tools:
+```bash
+pushd . && cd robocomp/tools/cli/ && pip install . && popd
 ```
 
 ```bash
