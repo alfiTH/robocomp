@@ -40,8 +40,10 @@ interfaces in a seamless way. Building new components is done using two domain-s
 
 # Installation from source
 
-Tested in Ubuntu 20.04 and 22.04
+Tested in Ubuntu 20.04 and 22.04, with Python3.10 and Python3.12
+
 **Note:** RoboComp is not compatible with Ubuntu 16.04. RoboComp needs to be compiled using C++11. Ice libraries with C++11 support are only available for zeroc-ice 3.7 and the packages for this version are only available since Ubuntu 18.04.
+
 **Note:** RoboComp is not compatible with Ubuntu 18.04. RoboComp needs to be compiled using cmake >= 3.16. It's not available in Ubuntu 18.04.
 
 **Note:** If you have installed Anaconda in your system. [Then you need to change the python from anaconda to default](https://github.com/robocomp/robocomp/issues/248).
@@ -53,7 +55,7 @@ Before you begin the installation, make sure you have the following prerequisite
 ### Prerequisites for Robocomp Installation
 ```bash
 sudo apt update
-sudo apt install python3 python3-pip cmake vim git wget qtbase5-dev libqt5xmlpatterns5-dev libopenscenegraph-dev libgsl-dev 
+sudo apt install python3 python3-pip cmake vim git wget libopenscenegraph-dev libgsl-dev 
 pip3 install vcstool 
 ```
 
@@ -61,7 +63,11 @@ pip3 install vcstool
 ```bash
 sudo apt install qt6-base-dev qt6-declarative-dev qt6-scxml-dev libqt6statemachineqml6 libqt6statemachine6 libbz2-dev libssl-dev zeroc-icebox zeroc-ice-all-dev libzeroc-icestorm3.7 libeigen3-dev meld
 pip install PySide6 zeroc-ice
+
+mkdir ~/software 2> /dev/null; cd ~/software && git clone https://github.com/GillesDebunne/libQGLViewer.git 
+cd libQGLViewer && qmake6 *.pro && make -j12 && sudo make install && sudo ldconfig
 ```
+
 
 ## Installation Steps
 
@@ -80,19 +86,14 @@ source ~/.bashrc
 
 3. Import RoboComp packages:
 ```bash
-vcs import . < robocomp.repos
-```
+vcs import . < robocomp.repos --recursive
 
-```bash
 sudo ln -s /home/$USER /home/robocomp
-```
 
-```bash
 cd /home/robocomp/robocomp
-ln -s robocomp_core/cmake cmake
-ln -s robocomp_core/classes classes
-ln -s robocomp_interfaces interfaces
-ln -s robocomp_tools tools
+ln -s core/cmake cmake
+ln -s core/classes classes
+
 mkdir components
 ```
 
@@ -114,7 +115,14 @@ source ~/.bashrc
 
 If you are going to develop with Robocomp it's recommendable to install the following packages too:
 ```bash
-sudo apt-get install yakuake qttools5-dev-tools qt5-assistant
+sudo apt-get install yakuake
+
+sudo git clone https://github.com/ryanhaining/cppitertools /usr/local/include/cppitertools
+cd /usr/local/include/cppitertools
+sudo mkdir build
+cd build
+sudo cmake ..
+sudo make install
 ```
 
 Done! Now let's have some fun.
