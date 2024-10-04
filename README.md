@@ -40,7 +40,7 @@ interfaces in a seamless way. Building new components is done using two domain-s
 
 # Installation from source
 
-Tested in Ubuntu 20.04 and 22.04, with Python3.10 and Python3.12
+Tested in Ubuntu 20.04, 22.04 and 24.04, with Python3.10 and Python3.12
 
 **Note:** RoboComp is not compatible with Ubuntu 16.04. RoboComp needs to be compiled using C++11. Ice libraries with C++11 support are only available for zeroc-ice 3.7 and the packages for this version are only available since Ubuntu 18.04.
 
@@ -64,8 +64,8 @@ pip3 install vcstool
 sudo apt install qt6-base-dev qt6-declarative-dev qt6-scxml-dev libqt6statemachineqml6 libqt6statemachine6 libbz2-dev libssl-dev zeroc-icebox zeroc-ice-all-dev libzeroc-icestorm3.7 libeigen3-dev meld
 pip install PySide6 zeroc-ice
 
-mkdir ~/software 2> /dev/null; cd ~/software && git clone https://github.com/GillesDebunne/libQGLViewer.git 
-cd libQGLViewer && qmake6 *.pro && make -j12 && sudo make install && sudo ldconfig
+mkdir ~/software 2> /dev/null; git clone https://github.com/GillesDebunne/libQGLViewer.git ~/software/libQGLViewer
+cd ~/software/libQGLViewer && qmake6 *.pro && make -j12 && sudo make install && sudo ldconfig && cd -
 ```
 
 
@@ -99,7 +99,7 @@ mkdir components
 
 4. Install RoboComp command-line tools:
 ```bash
-pushd . && cd robocomp/tools/cli/ && pip install . && popd
+pushd . && cd /home/robocomp/robocomp/tools/cli/ && pip install . && popd
 ```
 
 ```bash
