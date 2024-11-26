@@ -66,6 +66,9 @@ pip install PySide6 zeroc-ice
 
 mkdir ~/software 2> /dev/null; git clone https://github.com/GillesDebunne/libQGLViewer.git ~/software/libQGLViewer
 cd ~/software/libQGLViewer && qmake6 *.pro && make -j12 && sudo make install && sudo ldconfig && cd -
+
+mkdir ~/software 2> /dev/null; git clone https://github.com/marzer/tomlplusplus.git ~/software/tomlplusplus
+cd ~/software/tomlplusplus && cmake -B build && sudo make install -C build -j12 && cd -
 ```
 
 
@@ -79,7 +82,7 @@ wget https://raw.githubusercontent.com/robocomp/robocomp2/main/robocomp.repos
 
 2. Configure environment variables:
 ```bash
-echo "export ROBOCOMP=/home/robocomp/robocomp" >> ~/.bashrc
+echo "export ROBOCOMP=/home/$USER/robocomp" >> ~/.bashrc
 echo "export PATH=\$PATH:/home/$USER/.local/bin" >>  ~/.bashrc
 source ~/.bashrc
 ```
@@ -88,9 +91,7 @@ source ~/.bashrc
 ```bash
 vcs import . < robocomp.repos --recursive
 
-sudo ln -s /home/$USER /home/robocomp
-
-cd /home/robocomp/robocomp
+cd $ROBOCOMP
 ln -s core/cmake cmake
 ln -s core/classes classes
 
@@ -99,7 +100,7 @@ mkdir components
 
 4. Install RoboComp command-line tools:
 ```bash
-pushd . && cd /home/robocomp/robocomp/tools/cli/ && pip install . && popd
+pushd . && cd /home/$USER/robocomp/tools/cli/ && pip install . && popd
 ```
 
 ```bash
@@ -108,7 +109,7 @@ sudo ln -s /usr/include/eigen3/Eigen/ /usr/include/Eigen
 
 5. Add an alias for rcnode to your .bashrc:
 ```bash
-echo "alias rcnode='bash /home/robocomp/robocomp/tools/rcnode/rcnode.sh&'" >>  ~/.bashrc
+echo "alias rcnode='bash /home/$USER/robocomp/tools/rcnode/rcnode.sh&'" >>  ~/.bashrc
 source ~/.bashrc
 ```
 
